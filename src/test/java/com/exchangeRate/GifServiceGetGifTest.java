@@ -39,5 +39,4 @@ public class GifServiceGetGifTest {
     public void CheckNotEmptyResponse() {
         assertTrue(gifClient.getGif("TestGifId").length > 0);
     }
-
 }

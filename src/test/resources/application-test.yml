@@ -1,0 +1,9 @@
+exchange:
+  base: "testBase"
+  apiUrl: "http://localhost:9561"
+  apiKey: "exchangeTestKey"
+
+gifs:
+  apiUrl: "http://localhost:9561"
+  gifUrl: "http://localhost:9561"
+  apiKey: "giphyTestKey"

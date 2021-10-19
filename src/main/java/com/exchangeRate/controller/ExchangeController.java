@@ -21,9 +21,9 @@ import java.util.Calendar;
 @Slf4j
 public class ExchangeController {
 
-    @Value("${errorGifId}")
+    @Value("${gifs.errorGifId}")
     String errorGifId;
-    @Value("${equalValuesGifId}")
+    @Value("${gifs.equalValuesGifId}")
     String equalValuesGifId;
 
     @Autowired
