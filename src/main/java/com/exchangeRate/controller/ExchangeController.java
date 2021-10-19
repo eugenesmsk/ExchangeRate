@@ -33,14 +33,14 @@ public class ExchangeController {
         String gifId;
         String yesterdayDate = getYesterday();
         try {
-            double todaysValue = exchangeService.
-                    getTodaysValue(currency).
-                    getRates().
-                    get(currency.toUpperCase());
-            double yesterdaysValue = exchangeService.
-                    getYesterdaysValue(currency, yesterdayDate).
-                    getRates().
-                    get(currency.toUpperCase());
+            double todaysValue = exchangeService
+                    .getTodaysValue(currency)
+                    .getRates()
+                    .get(currency.toUpperCase());
+            double yesterdaysValue = exchangeService
+                    .getYesterdaysValue(currency, yesterdayDate)
+                    .getRates()
+                    .get(currency.toUpperCase());
 
             if(todaysValue > yesterdaysValue) {
                 gifId = (String) gifIdService.getRichGifId().getData().get("id");
