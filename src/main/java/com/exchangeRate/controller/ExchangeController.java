@@ -80,7 +80,6 @@ public class ExchangeController {
             gifId = (String) gifIdClient.getBrokeGifId().getData().get("id");
             return gifId;
         } else {
-            System.out.println(equalValuesGifId);
             gifId = equalValuesGifId;                   //if today's and yestarday's values are equal
             return gifId;
         }

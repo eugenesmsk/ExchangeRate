@@ -1,13 +1,13 @@
 server:
-  port: 8101
+  port: 8100
 
 exchange:
   base: "usd"
   apiUrl: "https://openexchangerates.org/api"
-  apiKey: "2d3668c65370491f812032fe01ada346"
+  apiKey: ""
 gifs:
   apiUrl: "https://api.giphy.com/v1/gifs"
   gifUrl: "https://media.giphy.com/media"
-  apiKey: "mqc92BJiYfxKTILZGkAm3QOsgGYkC3X3"
+  apiKey: ""
   equalValuesGifId: "3DONeV4N5Qz3gIpOue"
   errorGifId: "Vu7FU5T4RJPo1esgna"
