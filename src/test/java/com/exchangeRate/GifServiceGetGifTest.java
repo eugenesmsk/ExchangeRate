@@ -2,7 +2,7 @@ package com.exchangeRate;
 
 import com.exchangeRate.config.GifServiceMocks;
 import com.exchangeRate.config.WireMockConfig;
-import com.exchangeRate.service.GifService;
+import com.exchangeRate.client.GifClient;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,21 +24,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GifServiceGetGifTest {
 
     @Autowired
-    private WireMockServer mockGifService;
+    private WireMockServer mockGifClient;
 
     @Autowired
-    private GifService gifService;
+    private GifClient gifClient;
 
 
     @BeforeEach
     void setYesterdayUp() throws IOException {
-        GifServiceMocks.setupMockGetGifResponse(mockGifService);
+        GifServiceMocks.setupMockGetGifResponse(mockGifClient);
     }
 
     @Test
     public void CheckNotEmptyResponse() {
-        assertTrue(gifService.getGif("TestGifId").length > 0);
-        mockGifService.stop();
+        assertTrue(gifClient.getGif("TestGifId").length > 0);
     }
 
 }

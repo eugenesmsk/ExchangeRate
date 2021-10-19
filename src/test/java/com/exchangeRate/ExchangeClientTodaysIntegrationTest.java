@@ -1,8 +1,8 @@
 package com.exchangeRate;
 
-import com.exchangeRate.config.GetRichGifIdMocks;
+import com.exchangeRate.config.CurrencyTodaysMocks;
 import com.exchangeRate.config.WireMockConfig;
-import com.exchangeRate.service.GifIdService;
+import com.exchangeRate.client.ExchangeClient;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,27 +21,21 @@ import static org.junit.jupiter.api.Assertions.*;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {WireMockConfig.class})
-public class GifIdServiceRichTest {
+public class ExchangeClientTodaysIntegrationTest {
 
     @Autowired
-    private WireMockServer mockGifIdService;
+    private WireMockServer mockExchangeService;
 
     @Autowired
-    private GifIdService gifIdService;
-
+    private ExchangeClient exchangeClient;
 
     @BeforeEach
-    void setYesterdayUp() throws IOException {
-        GetRichGifIdMocks.setupMockGetRichIdResponse(mockGifIdService);
+    void setUp() throws IOException {
+        CurrencyTodaysMocks.setupMockCurrencyResponse(mockExchangeService);
     }
 
     @Test
-    public void CheckNotEmptyResponse() {
-        assertFalse(gifIdService.getRichGifId().getData().isEmpty());
-    }
-
-    @Test
-    public void CheckNostEmptyResponse() {
-        assertTrue(gifIdService.getRichGifId().getData().containsKey("id"));
+    public void whenGetTodaysValue_thenReturnsOnlyOneValue() {
+        assertEquals(1, exchangeClient.getTodaysValue("testCurrency").getRates().size());
     }
 }

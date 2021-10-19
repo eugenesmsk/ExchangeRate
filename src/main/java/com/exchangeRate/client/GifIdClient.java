@@ -1,11 +1,11 @@
-package com.exchangeRate.service;
+package com.exchangeRate.client;
 
 import com.exchangeRate.model.Gif;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(value = "gifUrlService", url = "${giphyApiUrl}")
-public interface GifIdService {
+@FeignClient(value = "gifIdClient", url = "${giphyApiUrl}")
+public interface GifIdClient {
 
     @GetMapping(value = "/random?api_key=${giphyApiKey}&tag=rich&rating=g")
     Gif getRichGifId();

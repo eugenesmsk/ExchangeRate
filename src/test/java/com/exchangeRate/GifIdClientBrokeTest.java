@@ -2,7 +2,7 @@ package com.exchangeRate;
 
 import com.exchangeRate.config.GetBrokeGifIdMocks;
 import com.exchangeRate.config.WireMockConfig;
-import com.exchangeRate.service.GifIdService;
+import com.exchangeRate.client.GifIdClient;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,28 +23,28 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {WireMockConfig.class})
-public class GifIdServiceBrokeTest {
+public class GifIdClientBrokeTest {
 
     @Autowired
-    private WireMockServer mockGifIdService;
+    private WireMockServer mockGifIdClient;
 
     @Autowired
-    private GifIdService gifIdService;
+    private GifIdClient gifIdClient;
 
 
     @BeforeEach
     void setYesterdayUp() throws IOException {
-        GetBrokeGifIdMocks.setupMockGetBrokeIdResponse(mockGifIdService);
+        GetBrokeGifIdMocks.setupMockGetBrokeIdResponse(mockGifIdClient);
     }
 
     @Test
     public void CheckNotEmptyResponse() {
-        assertFalse(gifIdService.getBrokeGifId().getData().isEmpty());
+        assertFalse(gifIdClient.getBrokeGifId().getData().isEmpty());
     }
 
     @Test
     public void CheckNostEmptyResponse() {
-        assertTrue(gifIdService.getBrokeGifId().getData().containsKey("id"));
+        assertTrue(gifIdClient.getBrokeGifId().getData().containsKey("id"));
     }
 
 }
