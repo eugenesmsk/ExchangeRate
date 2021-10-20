@@ -5,6 +5,7 @@ exchange:
   base: "usd"
   apiUrl: "https://openexchangerates.org/api"
   apiKey: ""
+  
 gifs:
   apiUrl: "https://api.giphy.com/v1/gifs"
   gifUrl: "https://media.giphy.com/media"
